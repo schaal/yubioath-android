@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.nfc.Tag
 import android.os.Bundle
@@ -163,9 +164,17 @@ class MainActivity : AppCompatActivity(), OnDiscoveredTagListener {
             R.id.menu_add_account_scan -> scanQRCode()
             R.id.menu_add_account_manual -> openFragment(AddAccountFragment())
             R.id.menu_change_password -> openFragment(SetPasswordFragment())
+            R.id.menu_change_theme -> toggleDayNight()
             R.id.menu_about -> openFragment(AboutFragment.newInstance(keyManager))
         }
         return true
+    }
+
+    private fun toggleDayNight() {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        val newNightMode = if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) Configuration.UI_MODE_NIGHT_NO else Configuration.UI_MODE_NIGHT_YES
+        delegate.setLocalNightMode(newNightMode)
+        recreate()
     }
 
     override fun tagDiscovered(tag: Tag) {
