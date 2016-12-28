@@ -108,5 +108,6 @@ Version: %1$s</p>
 
 <p>Copyright Yubico<br/>
 <a href="http://www.yubico.com/">http://www.yubico.com/</a></p>]]></string>
+    <string name="switch_app_theme">Switch app theme</string>
 
 </resources>
