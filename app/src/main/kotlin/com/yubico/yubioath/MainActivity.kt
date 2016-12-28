@@ -9,8 +9,10 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.nfc.Tag
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -172,7 +174,8 @@ class MainActivity : AppCompatActivity(), OnDiscoveredTagListener {
 
     private fun toggleDayNight() {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val newNightMode = if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) Configuration.UI_MODE_NIGHT_NO else Configuration.UI_MODE_NIGHT_YES
+        val newNightMode = if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("pref_day_night_mode", newNightMode).apply()
         delegate.setLocalNightMode(newNightMode)
         recreate()
     }
