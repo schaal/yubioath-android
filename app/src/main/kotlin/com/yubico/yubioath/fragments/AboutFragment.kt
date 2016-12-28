@@ -64,7 +64,7 @@ class AboutFragment : Fragment(), MainActivity.OnYubiKeyNeoListener {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.about_fragment, container, false).apply {
-            val version: String
+            var version: String
             try {
                 version = activity.packageManager.getPackageInfo(activity.packageName, 0).versionName
             } catch (e: PackageManager.NameNotFoundException) {

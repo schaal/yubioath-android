@@ -104,7 +104,7 @@ class KeyManager(private val store: SharedPreferences) {
             }
 
             val factory: SecretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
-            val legacyFactory: SecretKeyFactory
+            var legacyFactory: SecretKeyFactory
             try {
                 legacyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1And8bit")
                 return doCalculateSecret(if (legacy) legacyFactory else factory, password.toCharArray(), id)
