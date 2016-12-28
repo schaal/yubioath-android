@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity(), OnDiscoveredTagListener {
     private fun toggleDayNight() {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val newNightMode = if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES
-        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("pref_day_night_mode", newNightMode).apply()
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(YubioathApplication.PREF_DAY_NIGHT_MODE, newNightMode).apply()
         delegate.setLocalNightMode(newNightMode)
         recreate()
     }
