@@ -296,7 +296,7 @@ class ListCodesFragment : ListFragment(), MainActivity.OnYubiKeyNeoListener, Act
 
                 codeView.text = if (code.isRead) code.code else "<refresh to read>"
                 val valid = if (code.hotp) code.isRead else !expired
-                codeView.setTextColor(resources.getColor(if (valid) android.R.color.primary_text_dark else android.R.color.secondary_text_dark))
+                codeView.setTextColor(resources.getColor(if (valid) R.color.textColorPrimary else R.color.textColorSecondary))
                 readButton.setOnClickListener { readHotp(code) }
                 copyButton.setOnClickListener { code.copyToClipboard() }
                 readButton.visibility = if (code.hotp) View.VISIBLE else View.GONE
